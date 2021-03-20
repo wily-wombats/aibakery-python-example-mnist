@@ -1,0 +1,6 @@
+scikit-learn==0.24.1
+matplotlib==3.3.3
+joblib==1.0.0
+numpy==1.19.5
+wheel==0.36.2
+ai-bakery @ https://aibakery-packages.s3.eu-west-1.amazonaws.com/pypi/ai_bakery-1.0.2-py3-none-any.whl
