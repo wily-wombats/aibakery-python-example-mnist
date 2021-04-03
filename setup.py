@@ -6,13 +6,12 @@ import setuptools
 with pathlib.Path('requirements.txt').open() as requirements_txt:
     install_requires = [
         str(requirement)
-        for requirement
-        in pkg_resources.parse_requirements(requirements_txt)
+        for requirement in pkg_resources.parse_requirements(requirements_txt)
     ]
 
 setuptools.setup(
         name="mnist",
-        version="1.0.0",
+        version="1.1.0",
         author="Promising Data Science Lab",
         author_email="promising@datascience.com",
         description="MNIST Example",

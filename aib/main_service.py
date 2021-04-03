@@ -4,10 +4,9 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 
-from aibakery.serving.model_prediction_service import ResultCapture, \
-    ModelPredictionService
+from aibakery.aibakery_service import ResultCapture, AIBakeryService
 
-model_prediction_service = ModelPredictionService()
+aibakery_service = AIBakeryService()
 
 
 class MnistFeature(BaseModel):
@@ -18,8 +17,8 @@ def load_joblib(model_location):
     return joblib.load(f'{model_location}/mnist_svc.joblib')
 
 
-@model_prediction_service.prediction(feature_schema=MnistFeature,
-                                     model_loader=load_joblib)
+@aibakery_service.prediction(feature_schema=MnistFeature,
+                             model_loader=load_joblib)
 def predict(model, feature: MnistFeature, results: ResultCapture):
     x = np.array(feature.x).reshape(1, -1)
 
