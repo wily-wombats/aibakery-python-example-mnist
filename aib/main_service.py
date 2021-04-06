@@ -22,7 +22,14 @@ def load_joblib(model_location):
 def predict(model, feature: MnistFeature, results: ResultCapture):
     x = np.array(feature.x).reshape(1, -1)
 
+    probabilities = model.predict_proba(x)[0]
+    predicted_number = probabilities.argmax()
+    predicted_probability = probabilities[predicted_number]
+
     results.add_result(
-            key='number',
-            value=model.predict(x)[0],
+            key='predicted_number',
+            value=predicted_number,
+            meta={
+                'predicted_probability': predicted_probability
+            }
     )
