@@ -20,7 +20,7 @@ Models can be imported from `from example_model.model.<model name> import predic
 - Install the requirements
 - Run
     ```
-    MODEL_LOCATION=./notebooks python -m example_model.main_service
+    MODEL_LOCATION=./notebooks python -m aib.main_service
     ```
     > What does this do?
     >
@@ -29,7 +29,7 @@ Models can be imported from `from example_model.model.<model name> import predic
 ### If you have installed the package
 - Run
   ```
-  python -m example_model.main_service
+  python -m aib.main_service
   ```
 
 ## Requirements

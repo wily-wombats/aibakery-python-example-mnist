@@ -13,12 +13,12 @@ class MnistFeature(BaseModel):
     x: List[int]
 
 
-def load_joblib(model_location):
+def load_model(model_location):
     return joblib.load(f'{model_location}/mnist_svc.joblib')
 
 
 @aibakery_service.prediction(feature_schema=MnistFeature,
-                             model_loader=load_joblib)
+                             model_loader=load_model)
 def predict(model, feature: MnistFeature, results: ResultCapture):
     x = np.array(feature.x).reshape(1, -1)
 
