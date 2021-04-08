@@ -1,10 +1,9 @@
 from typing import List
-from pydantic import BaseModel
 
 import joblib
 import numpy as np
-
 from aibakery.aibakery_service import ResultCapture, AIBakeryService
+from pydantic import BaseModel
 
 aibakery_service = AIBakeryService()
 
