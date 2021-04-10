@@ -16,8 +16,8 @@ def load_model(model_location):
     return joblib.load(f'{model_location}/mnist_svc.joblib')
 
 
-@aibakery_service.prediction(feature_schema=MnistFeature,
-                             model_loader=load_model)
+@aibakery_service.prediction(model_loader=load_model,
+                             feature_schema=MnistFeature)
 def predict(model, feature: MnistFeature, results: ResultCapture):
     x = np.array(feature.x).reshape(1, -1)
 
@@ -32,3 +32,15 @@ def predict(model, feature: MnistFeature, results: ResultCapture):
                 'predicted_probability': predicted_probability
             }
     )
+
+
+if __name__ == '__main__':
+    sample_input = {
+        "x": [1, 2, 9, 8, 9, 4, 4, 4, 4, 14, 5, 14, 8,
+              7, 1, 14, 4, 12, 5, 2, 4, 9, 4, 4, 4, 7,
+              5, 4, 1, 14, 5, 4, 4, 4, 14, 4, 4, 2, 14,
+              4, 4, 1, 14, 4, 4, 1, 12, 4, 4, 4, 5, 14,
+              5, 9, 14, 4, 4, 4, 4, 9, 16, 16, 7, 4]
+    }
+
+    print(predict(feature=sample_input))

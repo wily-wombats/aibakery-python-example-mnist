@@ -11,7 +11,7 @@ with pathlib.Path('requirements.txt').open() as requirements_txt:
 
 setuptools.setup(
         name="mnist",
-        version="1.1.0",
+        version="1.0.0",
         author="Promising Data Science Lab",
         author_email="promising@datascience.com",
         description="MNIST Example",
