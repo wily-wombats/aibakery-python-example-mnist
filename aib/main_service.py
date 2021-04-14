@@ -12,8 +12,8 @@ class MnistFeature(BaseModel):
     x: List[int]
 
 
-def load_model(model_location):
-    return joblib.load(f'{model_location}/mnist_svc.joblib')
+def load_model(model_directory):
+    return joblib.load(f'{model_directory}/mnist_svc.joblib')
 
 
 @aibakery_service.prediction(model_loader=load_model,
