@@ -3,4 +3,4 @@ matplotlib==3.3.3
 joblib==1.0.0
 numpy==1.19.5
 wheel==0.36.2
-aibakery @ https://aibakery-packages.s3.eu-west-1.amazonaws.com/pypi/aibakery-1.4.2-py3-none-any.whl
+aibakery @ https://aibakery-packages.s3.eu-west-1.amazonaws.com/pypi/aibakery-1.4.3-py3-none-any.whl

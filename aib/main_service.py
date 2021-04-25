@@ -2,6 +2,7 @@ from typing import List
 
 import joblib
 import numpy as np
+from aibakery import logger
 from aibakery.aibakery_service import ResultCapture, AIBakeryService
 from pydantic import BaseModel
 
@@ -19,11 +20,16 @@ def load_model(model_directory):
 @aibakery_service.prediction(model_loader=load_model,
                              feature_schema=MnistFeature)
 def predict(model, feature: MnistFeature, results: ResultCapture):
+    logger.info('Starting model prediction')
+
     x = np.array(feature.x).reshape(1, -1)
+    logger.info(f'Model input {x}')
 
     probabilities = model.predict_proba(x)[0]
+    logger.info(f'Model prediction output {probabilities}')
     predicted_number = probabilities.argmax()
     predicted_probability = probabilities[predicted_number]
+    logger.info(f'Maximum probability index::{predicted_number} probability::{predicted_probability}')
 
     results.add_result(
             key='predicted_number',
@@ -32,6 +38,8 @@ def predict(model, feature: MnistFeature, results: ResultCapture):
                 'predicted_probability': predicted_probability
             }
     )
+
+    logger.info('Model prediction complete')
 
 
 if __name__ == '__main__':
